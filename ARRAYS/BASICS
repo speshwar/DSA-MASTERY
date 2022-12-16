@@ -1,0 +1,62 @@
+#include <iostream>
+#include <stdio.h>//To include the c language
+using namespace std;
+
+int main()
+{
+    //Declaring and assigning elements in array
+    int A[5];
+    A[1] = 10;
+    A[2] = 5;
+    A[3] = 15;
+    A[0] = 56;
+    A[4] = 78;
+
+    //Checking the size of the element
+    cout << sizeof(A) << endl;
+    cout << "It will display as 20 because size of single array is 4 then 4x5=20" << endl;
+
+    //Writing the c in c++
+    for (int i = 0; i < 5; i++) {
+        printf("%d\n", A[i]);
+    }
+
+    //Intializing the array
+    int B[6] = { 1,2,3,4,5,6 };
+    cout << sizeof(B)<<endl;
+
+    //Intializing without the size of array
+    int C[] = { 1,2,3,4,5,6,7,8,9 };
+    cout << sizeof(C)<<endl;
+    cout << "In this it will assume as 9 because 9 elements are passed in this so the answer is 9x4=36" << endl;
+
+    //Leaving the empty spaces
+    int D[10] = { 1,2 };
+    for (int i = 0; i < 10; i++) {
+        cout << D[i]<<endl;
+    }
+    cout << "In this the places which ever didnt declared is considered as a 0" << endl;
+
+    //!!!!!!!!!!!!! FOR EACH LOOOP !!!!!!!!!!!!!!!!!!!!!!!!!!
+    int E[] = { 1,2,3,4 };
+    for (int x : E) {
+        cout << x << endl;
+    }
+    cout << "This is written using the for each loop" << endl;
+    
+    //VARIABLE SIZE ARRAYS CANNOT BE INITIALISED
+    int n;
+    cout << "Enter the n numbers: " << endl;
+    cin >> n;
+    int F[n];
+    F[0] = 14;
+    F[2] = 25;
+
+    for (int Y : F) {
+        cout << F;
+    }
+    cout << "Here rest of the element except the second and 0th index\n all the value were garbage values" << endl;
+
+    system("pause>0");
+
+}
