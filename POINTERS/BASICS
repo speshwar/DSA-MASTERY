@@ -1,0 +1,78 @@
+#include <iostream>
+
+using namespace std;
+
+struct rectangle{
+    int len;
+    int bre;
+};
+
+int main()
+{
+    int a = 10;
+
+    //Declaring the pointer
+    //For the declaration we need to use thw * symbol
+    int *p;
+    p = &a;
+
+    cout << "The value of a is : " <<a<< endl;
+    cout << "The address of a stored in p is : " << p << endl;
+    cout << "The value of p is : " << *p << endl;
+
+    //POINTER WITH AN ARRAY
+    int A[3] = {10, 15, 56};
+    int *q;
+    int *r;
+    //It will get the address of the array elements so that all array can be accessed through for loop
+    q = A;
+    //It will get the single element address;
+    r = &A[0];
+    for (int i = 0; i < 3; i++) {
+        cout <<"The array is : "<< A[i]<<endl;
+        cout << "The pointer with array is : " << q[i] << endl;
+       
+    }
+    cout << "The single element in array using pointer is : " << r << endl;
+    
+    //MAllOC ALLOCATION
+    int *S;
+    
+    //creating the variable in heap memory
+    S = new int[5];
+    S[0]=5;S[1]=50;S[2]=45;S[3]=35;S[4]=25;
+    
+    cout<<"The values is heap memory: "<<endl;
+    for(int i=0;i<5;i++){
+        cout<<S[i]<<endl;
+    }
+    
+    //DEALLOCATING MEMORY
+    //After execution we should delete the memory 
+    //here [ ] is used because we created the array in the heap memeory
+    // if we create a varibale means just enter "delete <variable name>";
+    delete [ ] S;
+    
+    //since this is a small program there is no need of deallocating the memory but if it was large project we must deallocate it
+    //!!!!!!!!! After the program ends then the heap memory will deallocate automatically!!!!!!!!!!!!!!!!!
+    
+    
+    
+    //SIZE OF THE ALLOCATION IN POINTERS 
+    int *d;
+    char *f;
+    float *g;
+    double *h;
+    struct rectangle *R;
+    
+    cout<<sizeof(d)<<endl;
+    cout<<sizeof(f)<<endl;
+    cout<<sizeof(g)<<endl;
+    cout<<sizeof(h)<<endl;
+    cout<<sizeof(R)<<endl;
+    //In this it will be displayed as 8 for all.
+    //because the largest data type double contains 8 bytes so that initially it will allocate 8 bytes for 
+    //after declaration it will remove the unwanted bytes from the memory
+    return 0;
+    
+}
