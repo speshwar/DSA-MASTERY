@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a=10;
+    //Initialising the reference
+    int &r=a;
+    //Here referenece means it will refer to the varibale which we have initialized
+    
+    //!!!!!!!!!NOTE!!!!!!!!!!
+    //It wont consume new memory rather it will take the refereneced memory(it will take the 'a' memory)
+    
+    //If we initialised like this means new memory has been created 
+    int s=a;
+    cout<<a<<endl<<r<<endl<<s;
+    
+    return 0;
+}
