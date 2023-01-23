@@ -1,0 +1,45 @@
+#include <iostream>
+
+using namespace std;
+
+void callbyvalue(int a)
+{
+    a++;
+    cout<<"The a value inside the function is "<<a<<endl;
+
+}
+
+void callbyaddress(int *c,int *d)
+{
+    int temp=*c;
+    *c=*d;
+    *d=temp;
+    
+}
+
+void callbyreference(int &e,int &f)
+{
+    int temp=e;
+    e=f;
+    f=temp;
+}
+
+//!!!!!!!! NOTE WE CAN USE ONE PARAMETER AS A CALL BY VAL AND CALL BY REF
+// but we cannot use one parameter passing and one normal paramter
+int main()
+{
+    int b=10;
+    callbyvalue(b);
+    cout<<"The value of b is "<<b<<endl;
+    
+    int n1=50,n2=100;
+    
+    //refrencing the address of the varibale
+    callbyaddress(&n1,&n2);
+    cout<<"The n1 and n2 is "<<n1<<" "<<n2<<endl;
+    
+    int n3=15,n4=30;
+    callbyreference(n3,n4);
+    cout<<n3 <<" "<<n4;
+    return 0;
+}
