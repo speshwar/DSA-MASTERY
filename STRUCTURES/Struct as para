@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+//CALL BY VALUE
+struct rectangle{
+    int length;
+    int breadth;
+};
+void fun1(struct rectangle r){
+    //Changing values 
+    r.length=20;
+    cout<<"length in local fn is "<<r.length<<endl;
+    cout<<"breadth in local fn is "<<r.breadth<<endl;
+}
+
+//CALL BY ADDRESS
+void fun2(struct rectangle *p){
+    //Changing values
+    p->length=30;
+    cout<<"length in local fn is "<<p->length<<endl;
+    cout<<"breadth in local fn is "<<p->breadth<<endl;
+}
+
+//CREAING A STRUCTURE AS A VARIABLE IN HEAP
+
+struct rectangle *heapfn()
+{
+    //creating a pointer 
+    struct rectangle *hf;
+    
+    hf->length=50;
+    hf->breadth=65;
+    
+    return hf;
+    
+};
+int main()
+{
+    //CALL BY VALUE
+    struct rectangle r={10,5};
+    fun1(r);
+    cout<<"length in main function is "<< r.length<<endl;
+    cout<<"breadth in main function is "<< r.breadth<<endl;
+    
+    //CALL BY ADDRESS
+    fun2(&r);
+    cout<<"length in main function is "<< r.length<<endl;
+    cout<<"breadth in main function is "<< r.breadth<<endl;
+    // it is call by address so the values will change when formal parameters changed.
+    
+    //In this below function, it will create an structure and assign objects of it then it return it.
+    struct rectangle *hf1=heapfn();
+    
+    cout<<"length is"<<hf1->length<<endl;
+    cout<<"breadth is"<<hf1->breadth<<endl;
+    return 0;
+}
