@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int divi,divs;
+    cout<<"Enter divident: "<<endl;
+    cin>>divi;
+    cout<<"Enter divisor: "<<endl;
+    cin>>divs;
+    
+    //For remainder
+    cout<<"The remainder is: "<<divi%divs<<endl;
+    
+    //For divisor
+    cout<<"The quotient is: "<<divi/divs<<endl;
+    
+    return 0;
+}
