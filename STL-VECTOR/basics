@@ -1,0 +1,58 @@
+#include<iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    //CREATING A VECTOR
+    /*
+    syntax---> vector<int> (vector_name)
+    The main use of vector is we can extend as if we want
+    */
+    vector<int> num;
+
+    //ADDING NUMBERS
+    //1.
+    num.push_back(0);
+
+    //2.
+    for(int i=1;i<=10;i++)
+    {
+        num.push_back(i);
+    }    
+
+    //USING ITERATORS
+    /*
+    In this auto means it will automatically assign begin 
+    and end values
+    */
+    for(auto it = num.begin(); it !=num.end();it++)
+    {
+        //printing the iterators
+        //printing value
+        cout<<*it<<endl;
+
+        //printing the address
+        cout<<&it<<endl;
+    }
+
+    //Cbegin --> constant begin      cend ---> constant end
+    // we cannot change the value
+
+    //****for(auto it = num.cbegin(); it != num.cend();it++)
+
+    //SOME FUNCTIONALITIES
+    cout<<"size: "<<num.size()<<endl;
+    cout<<"Max size: "<<num.max_size()<<endl;
+    cout<<"Capacity: "<<num.capacity()<<endl;
+    num.resize(5);
+    cout<<"Size: "<<num.size()<<endl;
+    if(num.empty())
+    cout<<"vector is empty"<<endl;
+    else
+    cout<<"vector not empty"<<endl;
+    cout<<"Element[0] is: "<<num[0]<<endl;
+    cout<<"Element at (0) is: "<<num.at(0)<<endl;
+    cout<<"Front: "<<num.front()<<endl;
+    cout<<"Back: "<<num.back()<<endl;
+    num.clear();
+}
