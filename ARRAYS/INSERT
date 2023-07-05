@@ -1,0 +1,75 @@
+
+#include<iostream>
+using namespace std;
+
+struct Array {
+    int *val;
+    int Size; // -> It defines the total size of array
+    int length;// -> It defines the length of terms to be added
+};
+
+void Display(struct Array arr){
+    cout<<"The elements are: "<<endl;
+    for(int i=0;i<arr.length;i++)
+    {
+        cout<<arr.val[i]<<endl;
+    }
+}
+
+//APPEND FUNCTION
+void Append(struct Array &arr,int x){
+    if(arr.length<arr.Size){
+        arr.val[arr.length++]=x;
+
+    }
+}
+
+//INSERT FUNCTION
+void Insert(struct Array &arr,int x,int pos)
+{
+    if(pos>=0 && pos<=arr.Size)
+    {
+        for(int i=arr.length;i>pos;i--)
+        {
+            arr.val[i]=arr.val[i-1];
+        }
+        arr.val[pos]=x;
+        arr.length++;
+    }
+}
+int main(){
+
+    //Creating memory in heap
+    struct Array arr;
+    cout<<"Enter the size of array: "<<endl;
+    cin>>arr.Size;
+
+    //LENGTH To be used in for loop for getting numbers
+    cout<<"Enter the length of array: "<<endl;
+    cin>>arr.length;
+
+    //Space created in Heap
+    arr.val = new int[arr.Size];
+
+    //Adding elements into array
+    cout<<"Enter the elements into array: "<<endl;
+    for(int i=0;i<arr.length;i++)
+    {
+        cin>>arr.val[i];
+
+    }
+
+    //APPEND
+    int x;
+    cout<<"Enter the value to be append: "<<endl;
+    cin>>x;
+
+    Append(arr,x);
+    Display(arr);
+    Insert(arr,10,3);
+    cout<<"After Inserting elements in specific function"<<endl;
+    Display(arr);
+
+    delete[] arr.val;
+    return 0;
+}
