@@ -1,0 +1,68 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+int countDigits(int n)
+{
+    int sum=0;
+    while(n!=0){
+        sum+=n%10;
+        n/=10;
+    }
+    return sum;
+}
+
+int main()
+{
+    int n,d,count = 0;
+    cin>>n>>d;
+    cout<<"The values are: "<<endl;
+    for(int i=1;i<=n;i++)
+    {
+        if(countDigits(i)%d==0)
+        {
+            cout<<i<<" ";
+            count++;
+        }
+        else{
+            continue;
+        }
+    }
+    cout<<"there are "<<count<<" numbers are there";
+    return 0;
+}
+
+Find the number of integers between 1 and N (inclusive) satisfying the following condition, modulo 10 ^ 9 + 7
+
+The sum of the digits in base ten is a multiple of D
+
+Input Format
+
+The first line of input contains N.
+
+The second line of line contains D.
+
+Constraints
+
+1 <= N * 10 ^ 10000
+
+1D 100
+
+Output Format
+
+OVP the single value result.
+
+Sample Input O
+
+Sample Output 0
+
+Those six integers are: 4.8.13.17.22 and 26.
+
+Explanation 0
