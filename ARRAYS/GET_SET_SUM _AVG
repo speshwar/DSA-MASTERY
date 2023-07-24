@@ -1,0 +1,110 @@
+#include <iostream>
+
+using namespace std;
+struct array
+{
+    int* A;
+    int size;
+    int length;
+};
+
+int Get(struct array arr,int index)
+{
+    if(index>=0 && index<arr.length)
+    {
+        return arr.A[index];
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+void Set(struct array *arr,int index,int insert)
+{
+    if(index>=0 && index<arr->length)
+    {
+        arr->A[index] = insert;
+    }
+    else
+    {
+        cout<<"Given index value is larger"<<endl;
+    }
+}
+
+int Max(struct array arr)
+{
+    int max=arr.A[0];
+    for(int i=0;i<arr.length;i++)
+    {
+        if(arr.A[i]>max)
+        {
+            max = arr.A[i];
+        }
+    }
+    return max;
+}
+
+int Min(struct array arr)
+{
+    int min=arr.A[0];
+    for(int i=0;i<arr.length;i++)
+    {
+        if(arr.A[i]<min)
+        {
+            min = arr.A[i];
+        }
+    }
+    return min;
+}
+
+int sum(struct array arr,int i)
+{
+    if(i == arr.length-1)
+    {
+        return arr.A[i];
+    }
+    return arr.A[i] + sum(arr,i+1);
+}
+
+float Avg(struct array arr)
+{
+    return (float)sum(arr,0)/arr.length;
+}
+
+int main()
+{
+    int elements[] = {1,2,3,4,5};
+    struct array arr={elements,10,5};
+    
+    //Get function
+    cout<<"The value is ";
+    cout<<Get(arr,3)<<endl;
+    
+    //set Function
+    cout<<"Before setting the value"<<endl;
+    for(int i=0;i<arr.length;i++)
+    {
+        cout<<arr.A[i]<<" ";
+    }
+    Set(&arr,2,7);
+    cout<<"\nAfter setting the value"<<endl;
+    for(int j=0;j<arr.length;j++)
+    {
+        cout<<arr.A[j]<<" ";
+    }
+    
+    //MAX Function
+    cout<<"\nThe Maximum value is "<<Max(arr);
+    
+    //MIN Function
+    cout<<"\nThe Minimum Value is "<<Min(arr);
+    
+    //SUM Function
+    cout<<"\nThe sum of the array elements is "<<sum(arr,0);
+    
+    //AVG Function
+    cout<<"\nThe Average elements between array is "<<Avg(arr);
+    
+    return 0;
+}
