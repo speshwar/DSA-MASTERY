@@ -1,0 +1,98 @@
+#include <iostream>
+
+using namespace std;
+
+struct array {
+    int* A;
+    int size;
+    int length;
+};
+
+void swap(int *a,int *b)
+{
+    int temp=*a;
+    *a=*b;
+    *b=temp;
+}
+
+void Reverse(struct array *arr)
+{
+    for(int i=0,j=arr->length-1;i<=j;i++,j--)
+    {
+        int temp = arr->A[i];
+        arr->A[i] = arr->A[j];
+        arr->A[j] = temp;
+    }
+
+}
+
+void Left_shift(struct array *arr)
+{
+    int temp=0;
+    for(int i=0;i<arr->length;i++)
+    {
+        if(i==0)
+        {
+            arr->A[0]=temp;
+        }
+        else
+        {
+            swap(&arr->A[i-1],&arr->A[i]);
+        }
+    }
+}
+
+void Right_shift(struct array *arr)
+{
+    int temp=0;
+    for(int i=arr->length-1;i>=0;i--)
+    {
+        if(i==arr->length-1)
+        {
+            arr->A[arr->length-1]=temp;
+        }
+        else
+        {
+            swap(&arr->A[i+1],&arr->A[i]);
+        }
+    }
+}
+
+void Rotate_Right(struct array *arr)
+{
+    int temp = arr->A[arr->length - 1]; // Save the last element of the array
+    for (int i = arr->length - 1; i > 0; i--)
+        {
+            arr->A[i] = arr->A[i - 1]; // Shift elements to the right
+        }
+    arr->A[0] = temp;
+}
+
+void display(struct array arr)
+{
+    for(int i=0;i<arr.length;i++)
+    {
+        cout<<arr.A[i]<<" ";
+    }
+    cout<<endl;
+}
+
+int main()
+{
+    int Elements[]={1,2,3,4,5,6};
+    struct array arr = {Elements,6,6};
+    
+    // Reverse(&arr);
+    // display(arr);
+    
+    // Left_shift(&arr);
+    // display(arr);
+    
+    // Right_shift(&arr);
+    // display(arr);
+    
+    Rotate_Right(&arr);
+    display(arr);
+    
+    return 0;
+}
