@@ -1,0 +1,76 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+struct array{
+    int *A;
+    int length;
+    int size;
+};
+
+array* merge(struct array *arr1,struct array *arr2)
+{
+    int i=0,j=0,k=0;
+    //Heap memory
+    array* arr3 = new array;
+    int merged = arr1->length+arr2->length;
+    arr3->A = new int[merged];
+    
+    while(i<arr1->length && j<arr2->length)
+    {
+        if(arr1->A[i]<arr2->A[j])
+        {
+            arr3->A[k++]=arr1->A[i++];
+        }
+        else
+        {
+            arr3->A[k++]=arr2->A[j++];
+        }
+    }
+    
+    //remaining elements
+    while(i<arr1->length)
+    {
+        arr3->A[k++]=arr1->A[i++];
+    }
+    
+    while(j<arr2->length)
+    {
+        arr3->A[k++]=arr2->A[j++];
+    }
+    
+    //assigning values
+    arr3->length = merged;
+    arr3->size = merged;
+    
+    return arr3;
+}
+
+int main()
+{
+    int ele1[]={1,3,5,7,9};
+    int ele2[]={2,4,6,8,10};
+    struct array arr1={ele1,5,10};
+    struct array arr2={ele2,5,10};
+    struct array* arr3;
+    
+    arr3 = merge(&arr1,&arr2);
+    for(int i=0;i<arr3->length;i++)
+    {
+        cout<<arr3->A[i]<<" ";
+    }
+    
+    //deallocating space 
+    delete[] arr3->A;
+    delete arr3;
+    
+    return 0;
+}
