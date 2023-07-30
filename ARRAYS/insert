@@ -1,0 +1,83 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+using namespace std;
+struct array 
+{
+    int *A;
+    int length;
+    int size;
+};
+
+void swap(int *a,int *b)
+{
+   int temp = *a;
+   *a = *b;
+   *b = temp;
+}
+
+void insert_val(struct array *arr,int x)
+{
+    int i = arr->length-1;
+    if(arr->length == arr->size)
+    {
+        cout<<"The size is greater"<<endl;
+    }
+    while(arr->A[i]>x)
+    {
+        arr->A[i+1] = arr->A[i];
+        i--;
+    }
+    arr->A[i+1] = x;
+    arr->length++;
+}
+
+void arrange(struct array *arr)
+{
+    int i=0;
+    int j=arr->length-1;
+    while(i<j)
+    {
+        while(arr->A[i]<0){i++;}
+        while(arr->A[j]>=0){j--;}
+        if(i<j)
+        {
+            swap(&arr->A[i],&arr->A[j]);
+        }
+    }
+    
+}
+
+
+void display(struct array arr)
+{
+    for(int i=0;i<arr.length-1;i++)
+    {
+        cout<<arr.A[i]<<" ";
+    }
+}
+
+int main()
+{
+    int ele[]={1,2,5,-56,-63,6,7};
+    struct array arr={ele,7,10};
+    // int x;
+    // cout<<"Enter value to be inserted: "<<endl;
+    // cin>>x;
+    
+    // cout<<"Before insertion "<<endl;
+    // display(arr);
+    // insert_val(&arr,x);
+    // cout<<"\nAfter insertion "<<endl;
+    // display(arr);
+
+    arrange(&arr);
+    display(arr);
+    return 0;
+}
